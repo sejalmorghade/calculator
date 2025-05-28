@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <style>
+
+        body
+        {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+        }
+
+        .container
+        {
+            height: 540px;
+            width: 330px;
+            background-color: black;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px rgba(54, 52, 52, 0.75);
+            color: white;
+        }
+        input
+        {
+            height: 90px;
+            width: 90%;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px rgba(130, 120, 120, 0.75);
+            margin: 17px;
+            background-color: black;
+            color: white;
+            border: none;
+            text-align: right;
+            font-size: 30px;
+        }
+        input::placeholder
+        {
+            color: white;
+            text-align: right;
+            font-size: 30px;
+        }
+        .row1 , .row2 , .row3 , .row4 , .row5
+        {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .row1 button , .row2 button , .row3 button , .row4 button , .row5 button
+        {
+            height: 60px;
+            width: 60px;
+            background-color: black;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(109, 105, 105, 0.75);
+            margin: 10px;
+            color: white;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .row1 button , .row2 .mul , .row3 .plus , .row4 .minus , .row5 .equal
+        {
+            background-color: rgb(255, 102, 0);
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+
+        <input type="text" placeholder="0">
+
+        <div class="row1">
+
+            <button>AC</button>
+            <button>DEL</button>
+            <button>%</button>
+            <button>/</button>
+
+        </div>
+
+        <div class="row2">
+
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button class="mul">*</button>
+
+        </div>
+
+        <div class="row3">
+
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button class="plus">+</button>
+
+        </div>
+
+        <div class="row4">
+
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button class="minus">-</button>
+
+        </div>
+
+        <div class="row5">
+
+            <button>.</button>
+            <button>0</button>
+            <button>00</button>
+            <button class="equal">=</button>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        let input = document.querySelector('input');
+        let buttons = document.querySelectorAll('button');
+
+        let string = "";
+
+        let arr = Array.from(buttons);
+
+        arr.forEach(button => {
+
+            button.addEventListener('click' , (e) => {
+
+                if(e.target.innerHTML == '=')
+                {
+                    string = eval(string);
+                    input.value = string;
+                }
+                else if(e.target.innerHTML == 'AC')
+                {
+                    string = "";
+                    input.value = string;
+                }
+                else if(e.target.innerHTML == 'DEL')
+                {
+                    string = string.substring(0, string.length-1);
+                    input.value = string;
+                }
+                else
+                {
+                    string += e.target.innerHTML;
+                    input.value = string;
+                }
+
+            })
+        })
+
+    </script>
+    
+</body>
+</html>
